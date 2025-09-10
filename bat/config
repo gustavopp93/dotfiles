@@ -1,0 +1,16 @@
+# Theme
+--theme="Catppuccin Mocha"
+
+# Show line numbers, changes, and header
+--style=numbers,changes,header
+
+# Enable italic text
+--italic-text=always
+
+# Paging
+--paging=auto
+
+# Custom syntax mappings for common files
+--map-syntax "*.gitignore:Git Ignore"
+--map-syntax "Brewfile:Ruby"
+--map-syntax "*.conf:INI"
