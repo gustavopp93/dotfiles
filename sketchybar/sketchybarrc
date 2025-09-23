@@ -4,86 +4,56 @@
 # https://github.com/FelixKratz/dotfiles
 
 PLUGIN_DIR="$CONFIG_DIR/plugins"
+ITEM_DIR="$HOME/.config/sketchybar/items" # Directory where the items are configured
 
 source "$CONFIG_DIR/plugins/colors.sh"
 
-##### Bar Appearance #####
-# Configuring the general appearance of the bar.
-# These are only some of the options available. For all options see:
-# https://felixkratz.github.io/SketchyBar/config/bar
-# If you are looking for other colors, see the color picker:
-# https://felixkratz.github.io/SketchyBar/config/tricks#color-picker
 
-# Configuring the general appearance of the bar with Catppuccin Mocha theme
-sketchybar --bar position=top \
-                 height=40 \
-                 blur_radius=30 \
-                 color=$BASE \
-                 shadow=on \
-                 corner_radius=10 \
-                 margin=10 \
-                 y_offset=5
-##### Changing Defaults #####
-# We now change some default values, which are applied to all further items.
-# For a full list of all available item properties see:
-# https://felixkratz.github.io/SketchyBar/config/items
+PADDINGS=3 # All paddings use this value (icon, label, background and bar paddings)
 
-default=(
-  padding_left=5
-  padding_right=5
-  icon.font="Hack Nerd Font:Bold:17.0"
-  label.font="Hack Nerd Font:Bold:14.0"
-  icon.color=$TEXT
-  label.color=$TEXT
-  icon.padding_left=4
-  icon.padding_right=4
-  label.padding_left=4
-  label.padding_right=4
-  background.color=$SURFACE0
-  background.corner_radius=6
-  background.height=28
-)
+POPUP_BORDER_WIDTH=2
+POPUP_CORNER_RADIUS=11
 sketchybar --default "${default[@]}"
 
+# Setting up the general bar appearance and default values
+sketchybar --bar     height=40                                           \
+                     corner_radius=9                                     \
+                     border_width=0                                      \
+                     margin=10                                           \
+                     blur_radius=50                                      \
+                     position=top                                        \
+                     padding_left=10                                     \
+                     padding_right=10                                    \
+                     color=$BASE                                         \
+                     topmost=off                                         \
+                     sticky=on                                           \
+                     font_smoothing=off                                  \
+                     y_offset=10                                         \
+                     shadow=$SURFACE0                                    \
+                     notch_width=200                                     \
+                                                                         \
+           --default drawing=on                                          \
+                     updates=when_shown                                  \
+                     label.font="Hack Nerd Font:Bold:17.0"               \
+                     icon.font="Hack Nerd Font:Bold:14.0"                \
+                     icon.color=$TEXT                                    \
+                     label.color=$TEXT                                   \
+                     icon.padding_left=$PADDINGS                         \
+                     icon.padding_right=$PADDINGS                        \
+                     label.padding_left=$PADDINGS                        \
+                     label.padding_right=$PADDINGS                       \
+                     background.padding_right=$PADDINGS                  \
+                     background.padding_left=$PADDINGS                   \
+                     background.height=28                                \
+                     popup.background.border_width=$POPUP_BORDER_WIDTH   \
+                     popup.background.corner_radius=$POPUP_CORNER_RADIUS \
+                     popup.background.border_color=$POPUP_BORDER_COLOR   \
+                     popup.background.color=$BASE                        \
+                     popup.background.shadow.drawing=$SURFACE0
 sketchybar --add event aerospace_workspace_change
-# sketchybar --add event aerospace_workspace_update
-
-for sid in $(aerospace list-workspaces --all); do
-    sketchybar --add item space.$sid left \
-        --subscribe space.$sid aerospace_workspace_change \
-        --set space.$sid \
-        background.color=$SURFACE0 \
-        background.corner_radius=5 \
-        background.height=25 \
-        background.drawing=off \
-        icon="$sid" \
-        icon.padding_left=7 \
-        icon.padding_right=7 \
-        label.drawing=off \
-        click_script="aerospace workspace $sid" \
-        script="$CONFIG_DIR/plugins/aerospace.sh $sid"
-done
-##### Adding Left Items #####
-# We add some regular items to the left side of the bar, where
-# only the properties deviating from the current defaults need to be set
-
-sketchybar --add item chevron left \
-           --set chevron icon= label.drawing=off \
-           --add item front_app left \
-           --set front_app icon.drawing=off script="$PLUGIN_DIR/front_app.sh" \
-           --subscribe front_app front_app_switched
-
-##### Adding Right Items #####
-# In the same way as the left items we can add items to the right side.
-# Additional position (e.g. center) are available, see:
-# https://felixkratz.github.io/SketchyBar/config/items#adding-items-to-sketchybar
-
-# Some items refresh on a fixed cycle, e.g. the clock runs its script once
-# every 10s. Other items respond to events they subscribe to, e.g. the
-# volume.sh script is only executed once an actual change in system audio
-# volume is registered. More info about the event system can be found here:
-# https://felixkratz.github.io/SketchyBar/config/events
-##### Adding Right Items #####
+# Left
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
 sketchybar --add item clock right \
            --set clock update_freq=10 \
                        icon= \
