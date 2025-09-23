@@ -8,3 +8,10 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ./.macos
 ```
 
+### Tooling
+- aerospace
+- bat
+- border
+- btop
+- ghostty
+- sketchybar
