@@ -20,10 +20,8 @@ for sid in $(aerospace list-workspaces --all); do
     script="$CONFIG_DIR/plugins/aerospace.sh $sid"
 done
 
-sketchybar --add item separator left \
-  --set separator icon= \
-  icon.font="Hack Nerd Font:Regular:16.0" \
-  background.padding_left=26 \
-  background.padding_right=15 \
-  label.drawing=off \
-  icon.color=$WHITE
+# sketchybar --add item separator left \
+#   --set separator icon= \
+#   icon.font="$FONT:Regular:15.0" \
+#   background.padding_left=15 \
+#   label.drawing=off
