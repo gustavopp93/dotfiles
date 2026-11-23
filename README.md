@@ -42,6 +42,7 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 - btop
 - fish
 - ghostty
+- git
 - nvim
 - rex
 - sketchybar (macOS)
@@ -49,8 +50,5 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ### Fish
 
 Only the personal files are in the repo. Plugins come from `fish_plugins`.
-After `chezmoi apply`, install the plugins with [Fisher](https://github.com/jorgebucaran/fisher):
-
-```fish
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update
-```
+`chezmoi apply` installs them with [Fisher](https://github.com/jorgebucaran/fisher)
+(`run_onchange_after_install-fish-plugins.sh.tmpl`). The script runs again only when `fish_plugins` changes.

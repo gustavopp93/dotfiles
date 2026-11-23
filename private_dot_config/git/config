@@ -1,0 +1,6 @@
+[user]
+  name = Gustavo
+  email = gustavo.pajuelo17@hey.com
+
+[init]
+	defaultBranch = main
