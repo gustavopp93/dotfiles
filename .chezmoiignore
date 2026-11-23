@@ -1,0 +1,10 @@
+# Repo files, not configs
+README.md
+LICENSE
+
+{{ if ne .chezmoi.os "darwin" }}
+# macOS-only tools
+.config/aerospace
+.config/borders
+.config/sketchybar
+{{ end }}
