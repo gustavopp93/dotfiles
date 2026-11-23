@@ -6,10 +6,12 @@ shell-integration-features = no-cursor, sudo, title
 background-opacity = 0.9
 theme = Catppuccin Mocha
 font-family = "JetbrainsMonoNL Nerd Font Mono"
+unfocused-split-opacity = 0.5
 
 # macOS-specific settings
 macos-option-as-alt = true
 macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
 
 # window controls
 window-save-state = always

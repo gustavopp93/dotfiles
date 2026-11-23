@@ -10,7 +10,7 @@ default-root-container-orientation = 'auto'
 # so it won't be run twice on AeroSpace restart
 # Start AeroSpace at login
 after-startup-command = [
-  'exec-and-forget sketchybar',
+  'exec-and-forget sketchybar --reload || sketchybar',
   'exec-and-forget borders'
 ]
 start-at-login = true 
@@ -19,16 +19,16 @@ start-at-login = true
 exec-on-workspace-change = ['/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE']
 
 on-focus-changed = [
-  'exec-and-forget sketchybar --trigger aerospace_focus_change',
+  'exec-and-forget sketchybar --trigger aerospace_focus_change'
 ]
 
 [gaps]
-inner.horizontal = 8
-inner.vertical = 8
-outer.bottom = 5
-outer.top = [{ monitor.main = 10}, 10]
-outer.right = 5
-outer.left = 5
+inner.horizontal = 5
+inner.vertical = 5
+outer.bottom = 30
+outer.top = 30
+outer.right = 10
+outer.left = 10
 
 # Explicitly define only the workspaces you want
 [workspace-to-monitor-force-assignment]
@@ -93,8 +93,11 @@ alt-shift-space = 'layout floating tiling'
 alt-f = 'fullscreen'
 
 [[on-window-detected]]
-if.app-id = 'com.mitchellh.ghostty'
-run = 'move-node-to-workspace 1'
+if.app-id = 'com.superlogical.rex'
+run= [
+  "layout floating",
+  "move-node-to-workspace 1"
+]
 
 [[on-window-detected]]
 if.app-id = 'com.vivaldi.Vivaldi'
@@ -109,14 +112,18 @@ if.app-id = 'com.tinyspeck.slackmacgap'
 run = 'move-node-to-workspace 3'
 
 [[on-window-detected]]
-if.app-id = 'com.spotify.client'
+if.app-id = 'com.linear'
 run = 'move-node-to-workspace 4'
 
 [[on-window-detected]]
-if.app-id = 'notion.id'
+if.app-id = 'com.usebruno.app'
 run = 'move-node-to-workspace 5'
 
 [[on-window-detected]]
-if.app-id = 'com.atlassian.trello'
-run = 'move-node-to-workspace 5'
+if.app-id = 'com.anthropic.claudefordesktop'
+run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+if.app-id = 'com.spotify.client'
+run = 'move-node-to-workspace 7'
 
