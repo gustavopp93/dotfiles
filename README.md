@@ -43,6 +43,7 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 - fish
 - ghostty
 - git
+- mise
 - nvim
 - rex
 - sketchybar (macOS)
