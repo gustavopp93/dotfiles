@@ -63,3 +63,6 @@ source "$ITEM_DIR/volume.sh"
 source "$ITEM_DIR/battery.sh"
 ##### Force all scripts to run the first time (never do this in a script) #####
 sketchybar --update
+
+# Highlight the focused AeroSpace workspace (after --update, which resets it)
+sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused 2>/dev/null)"

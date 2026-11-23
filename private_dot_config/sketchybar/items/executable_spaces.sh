@@ -1,7 +1,13 @@
 #!/bin/bash
 
-# sketchybar --add event aerospace_workspace_update
-for sid in $(aerospace list-workspaces --all); do
+# At login SketchyBar can start before AeroSpace. Wait for the AeroSpace server.
+for _ in $(seq 1 30); do
+  WORKSPACES=$(aerospace list-workspaces --all 2>/dev/null) && [ -n "$WORKSPACES" ] && break
+  sleep 1
+done
+[ -z "$WORKSPACES" ] && WORKSPACES="1 2 3 4 5 6 7"
+
+for sid in $WORKSPACES; do
   sketchybar --add item space.$sid left \
     --subscribe space.$sid aerospace_workspace_change \
     --set space.$sid \
@@ -14,7 +20,7 @@ for sid in $(aerospace list-workspaces --all); do
     icon="$sid" \
     icon.padding_left=22 \
     icon.padding_right=22 \
-    icon.height_color=$PINK \
+    icon.highlight_color=$PINK \
     label.drawing=off \
     click_script="aerospace workspace $sid" \
     script="$CONFIG_DIR/plugins/aerospace.sh $sid"

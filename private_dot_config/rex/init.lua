@@ -1,0 +1,1 @@
+-- Rex config, migrated from Herdr and Ghostty.
