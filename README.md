@@ -53,3 +53,8 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 Only the personal files are in the repo. Plugins come from `fish_plugins`.
 `chezmoi apply` installs them with [Fisher](https://github.com/jorgebucaran/fisher)
 (`run_onchange_after_install-fish-plugins.sh.tmpl`). The script runs again only when `fish_plugins` changes.
+
+### Python venvs
+
+mise activates the `.venv` of a uv project (a directory with `uv.lock`) when you `cd` into it
+(`python.uv_venv_auto` in `mise/config.toml`). uv manages Python itself, not mise.
