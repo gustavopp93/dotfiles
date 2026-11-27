@@ -66,3 +66,7 @@ sketchybar --update
 
 # Highlight the focused AeroSpace workspace (after --update, which resets it)
 sketchybar --trigger aerospace_workspace_change FOCUSED_WORKSPACE="$(aerospace list-workspaces --focused 2>/dev/null)"
+
+# Fix item order. At login, the startup run and AeroSpace's "sketchybar --reload"
+# can run this file at the same time, so items get added out of order.
+sketchybar --reorder apple.logo $(for sid in $WORKSPACES; do printf 'space.%s ' "$sid"; done) chevron front_app
