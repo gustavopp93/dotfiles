@@ -51,5 +51,11 @@ When setting up a new Mac, you may want to set some sensible macOS defaults:
 ### Fish
 
 Only the personal files are in the repo. Plugins come from `fish_plugins`.
-`chezmoi apply` installs them with [Fisher](https://github.com/jorgebucaran/fisher)
-(`run_onchange_after_install-fish-plugins.sh.tmpl`). The script runs again only when `fish_plugins` changes.
+chezmoi does not install them. After `chezmoi apply` on a new machine, install
+[Fisher](https://github.com/jorgebucaran/fisher) and the plugins one time:
+
+```sh
+fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher update'
+```
+
+When you change `fish_plugins`, run `fisher update`.
