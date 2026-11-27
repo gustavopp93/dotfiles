@@ -64,3 +64,4 @@ When you change `fish_plugins`, run `fisher update`.
 
 mise activates the `.venv` of a uv project (a directory with `uv.lock`) when you `cd` into it
 (`python.uv_venv_auto` in `mise/config.toml`). uv manages Python itself, not mise.
+The prompt shows the active venv name (`fish/conf.d/venv_prompt.fish`).
