@@ -6,3 +6,5 @@ ruby = "3.3.6"
 # Read .nvmrc and .node-version in projects (fnm used them).
 # Python is not in this list: uv manages .python-version.
 idiomatic_version_file_enable_tools = ["node"]
+# Activate the .venv of uv projects (with uv.lock) on cd. Replaces dirvenv.fish.
+python.uv_venv_auto = true

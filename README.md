@@ -59,3 +59,8 @@ fish -c 'curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/fun
 ```
 
 When you change `fish_plugins`, run `fisher update`.
+
+### Python venvs
+
+mise activates the `.venv` of a uv project (a directory with `uv.lock`) when you `cd` into it
+(`python.uv_venv_auto` in `mise/config.toml`). uv manages Python itself, not mise.
